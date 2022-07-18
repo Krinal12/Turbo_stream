@@ -1,0 +1,1 @@
+# $redis = Redis.new(:Host => 'localhost', :port => 6379, :password => "aiThBHSVGWa4y00pvMBQUtXysukKLCB3GXst14ve51tkp9xGN9sLq1c7E3+NxgCRyf2Z2ebk5D5O61Kals@ls-1")

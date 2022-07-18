@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Rooms</h1>
+
+<div id="rooms">
+  <% @rooms.each do |room| %>
+    <%= render room %>
+    <p>
+      <%= link_to "Show this room", room %>
+    </p>
+  <% end %>
+</div>
+<%# <div style="margin-top: 2rem;">
+  <h2>Stimulus</h2>  
+  <div data-controller="hello">
+    <input data-hello-target="name" type="text">
+    <button data-action="click->hello#greet">
+      Greet
+    </button>
+    <span data-hello-target="output">
+    </span>
+  </div>
+</div> %>
+<%= link_to "New room", new_room_path %>
