@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  resources :customers do
+  get '/page/:page', action: :index, on: :collection
+end
+  devise_for :users
   resources :todos
-  root "todos#index"
+  root "customers#index"
   resources :rooms do
     resources :messages
   end

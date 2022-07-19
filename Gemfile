@@ -29,7 +29,7 @@ gem "jbuilder"
 # gem 'turbolinks', '~> 5'
 # gem 'webpacker', '~> 4.x'
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0", require: true
+# gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -44,7 +44,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -71,3 +71,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "devise", "~> 4.8"
+gem "cssbundling-rails"
+gem 'bootstrap', '~> 5.0.2'
+gem 'kaminari'
