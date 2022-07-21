@@ -1,0 +1,20 @@
+<% if notice != nil %>
+<p class="alert alert-success alert-dismissible fade show" role="alert">
+  <span ><%= notice %></span>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</p>
+<% end %>
+<div class="card">
+  <div class="card-header d-flex flex-row justify-content-between" >
+    <h5 class="m-3">Product</h5>
+    <p class="align-self-end"><%= link_to "Back", products_path, class:"btn btn-dark" %></p>
+  </div>
+  <div class="card-body">
+    <%= render @product %>
+    <%= link_to "Edit", edit_product_path(@product), class:"btn btn-dark" %> 
+    <%= link_to "Destroy", @product, method: :delete, data:{
+      confirm: "Are you sure ?"
+    }, class:"btn btn-danger" %>
+
+  <div>
+</div>

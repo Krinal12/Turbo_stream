@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :products
   resources :customers do
   get '/page/:page', action: :index, on: :collection
 end

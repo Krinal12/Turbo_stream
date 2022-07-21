@@ -1,0 +1,84 @@
+<% if notice != nil %>
+  <p class="alert alert-success alert-dismissible fade show" role="alert">
+    <span ><%= notice %></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </p>
+<% end %>
+
+  <h1  class=" justify-content-start">Products</h1>
+  <span class="d-flex  justify-content-end">
+    <%= link_to "New product", new_product_path, class:"btn btn-dark  me-3" %>
+    <button type="button" class="btn btn-dark  " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Search Products
+    </button>
+  </span>
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Search Products</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= search_form_for @search do |form| %>
+            <div class="form-group mb-3">
+              <%= form.label :search_by_name, class: "form-label" %>
+              <%= form.text_field :name_cont, class: "form-control" %>
+            </div>
+            <div class="form-group mb-3">
+              <%= form.label :price_gteq, "Price between", class: "form-label" %>
+              <%= form.text_field :price_gteq, class: "form-control"  %>
+              <%= form.label :price_lteq, "and", class: "form-label" %>
+              <%= form.text_field :price_lteq, class: "form-control"  %>    
+            </div>
+            <div class="modal-footer">
+              <div class="form-group">
+                <%= form.submit "Search", class:"btn btn-dark  btn-md" %>
+                <%= link_to "Reset", products_path, class:"btn btn-secondary" %>
+                <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<table class="table table-borderd">
+  <tr>
+    <%# <th><%= sort_link(@search, :name, "Name") %></th> 
+    <%# <th><%= sort_link(@search, :price, "Price") %></th> 
+    <%# <th><%= sort_link(@search, :description, "Description") %></th> 
+    <th>Name</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Image</th>
+    <th>Action</th>
+  </tr>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= number_to_currency(product.price) %></td>
+        <td><%= product.description %></td>
+        <td><%= image_tag product.image, size:100  if product.image.attached?%></td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Actions
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><%= link_to "View", product, class: "dropdown-item"%></li>
+              <li><%= link_to "Edit", edit_product_path(product), class: "dropdown-item"%></li>
+              <li><%= link_to "Delete", product, method: :delete, data:{ confirm: "Are You Sure ?"}, class: "dropdown-item"%></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+

@@ -1,0 +1,22 @@
+<div id="<%= dom_id product %>">
+  <p>
+    <strong>Name:</strong>
+    <%= product.name %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= number_to_currency(product.price) %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= product.description %>
+  </p>
+
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag product.image, size:100  if product.image.attached?%>
+  </p>
+
+</div>
